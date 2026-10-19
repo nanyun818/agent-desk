@@ -21,7 +21,7 @@
   "scripts": {
     "dev": "node server/index.mjs --dev",
     "start": "node server/index.mjs",
-    "build": "vite build",
+    "build": "vite build && node scripts/collect-licenses.mjs",
     "test": "node --test test/*.test.mjs",
     "desktop": "electron .",
     "desktop:prepare": "node scripts/prepare-desktop.mjs",
