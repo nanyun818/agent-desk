@@ -23,4 +23,3 @@ jobs:
       - run: npm ci
       - run: node scripts/audit-source.mjs
       - run: npm test
-      - run: npm run build

@@ -162,14 +162,14 @@ test('official presets use separate credential names and legacy providers retain
   assert.equal(existing.protocol, 'chat-completions');
 });
 
-test('standalone backend reports the real fallback port and exits when its desktop IPC disconnects', async t => {
+test('standalone backend reports the real fallback port and exits when its desktop IPC disconnects', { timeout: 15000 }, async t => {
   const { directory } = await fixture(t);
   const occupied = http.createServer((_req, res) => res.end('occupied')); occupied.listen(0, '127.0.0.1'); await once(occupied, 'listening');
   t.after(() => new Promise(resolve => occupied.close(resolve)));
   const child = fork(fileURLToPath(new URL('../server/index.mjs', import.meta.url)), [], { execArgv: [], env: { ...process.env, AGENT_DESK_DATA_DIR: path.join(directory, 'engine'), PORT: String(occupied.address().port) }, stdio: ['ignore', 'ignore', 'ignore', 'ipc'], windowsHide: true });
   t.after(() => { if (child.exitCode === null) child.kill(); });
   const timeout = setTimeout(() => child.kill(), 10000); t.after(() => clearTimeout(timeout));
-  const [ready] = await once(child, 'message'); assert.equal(ready.type, 'ready'); assert.notEqual(ready.port, occupied.address().port);
+  const [ready] = await once(child, 'message', { signal: AbortSignal.timeout(10000) }); assert.equal(ready.type, 'ready'); assert.notEqual(ready.port, occupied.address().port);
   const response = await fetch(`http://127.0.0.1:${ready.port}/api/bootstrap`); const boot = await response.json();
   assert.equal(boot.processId, child.pid); assert.equal(path.resolve(boot.dataDirectory), path.resolve(directory, 'engine'));
   const exited = once(child, 'exit'); child.disconnect(); const [code] = await exited; assert.equal(code, 0);
