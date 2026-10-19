@@ -1,0 +1,25 @@
+{
+  "name": "桃铃",
+  "englishName": "Taoling",
+  "nickname": "桃桃",
+  "status": "User-approved character concept",
+  "approvedAt": "2026-10-19",
+  "method": "Built-in image generation; approved concept sheet used as identity reference",
+  "assets": [
+    {
+      "file": "../wallpapers/taoling.webp",
+      "source": "Transparent standing illustration",
+      "prompt": "The attached sheet is the APPROVED original character identity for our brand mascot TAOLING (桃铃). It is a character reference, NOT an image to reproduce as a sheet. Produce ONE single isolated full-body character illustration on a genuinely TRANSPARENT alpha background. Extract and faithfully redraw ONLY the large adult catgirl maid on the LEFT of the reference: exactly same strawberry-milk pink fluffy shoulder-length twin tails, large pink cat ears with ivory inner fur, heart ahoge, soft round cute adult face, large mint-aqua eyes and tiny happy cat mouth, asymmetrical dusty-rose bow and faceted silver two-ear hair pin, charcoal-and-ivory ruffled maid headband, black/ivory ruffled maid dress and apron, dusty-rose collar bow and mint jewel, tiny graphite utility waist pouch and buckles, opaque black stockings and practical ankle boots, ONE pink tail with ivory tip. Keep the exact approved body proportions and sweet welcome-wave pose, not the chibi proportions. Clearly an adult woman, fully clothed, tasteful, no cleavage or fetish framing. Original design, high-end clean anime game illustration with light industrial tech detailing, delicate crisp lines, careful soft cel shading, matches reference EXACTLY. Every part must fit, including ear tips, ahoge, tail, fingers and both shoes. Tall portrait canvas roughly 1:2, character fills most of it with 6% transparent padding on all sides. No expression studies, no extra figures, no floor, no background, no shadows outside silhouette, no text, no watermark, NO CHANGE of costume or identity. Aim for production-ready cutout edges, no stray pixels or speckled transparency."
+    },
+    {
+      "file": "taoling-avatar.webp",
+      "source": "Square avatar illustration; also encoded as application icon",
+      "prompt": "Use the supplied approved character sheet as the EXACT identity reference for TAOLING (桃铃), our original brand mascot. Create ONE square 1:1 app-avatar icon artwork, not a sheet. Close-up HEAD AND SHOULDERS of the same very cute pink-haired adult CATGIRL MAID, with the entire fluffy pink cat ears, heart ahoge, maid headband, asymmetric dusty rose bow and silver faceted hair clip visible with comfortable 8% padding. The same fluffy pink twin tails, huge luminous mint-aqua eyes, soft round cheeks, tiny adorable cat smile, delicate blush, charcoal-and-ivory ruffled maid headband, black/ivory collar, dusty-rose bow and mint jewel. Face front-facing with tiny cheerful head tilt. Consistent with reference, NOT a new character. Art: polished clean anime game mascot icon, crisp lovely lines and carefully shaded expressive eyes, simplified fine details so it stays recognizable at 32px. Composition fills square with face dominating central area, both ears fit. Background is ONE FLAT pale blush-silver color #F7EDF1, full square, no rounded rectangle, no frame, no badge, no text, no watermark, no scenery, no gradient, no other characters. This is an original mascot for Agent Desk; do not add any existing game logo or uniform symbol. Sweet and moe, not photoreal, not mature glamour."
+    },
+    {
+      "file": "taoling-mini.png",
+      "source": "Approved mini-pet.png from design/mascot/pink-maid-concept-01, resized preserving alpha",
+      "promptFile": "design/mascot/pink-maid-concept-01/provenance.json"
+    }
+  ]
+}

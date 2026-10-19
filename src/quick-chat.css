@@ -1,0 +1,31 @@
+.quick-chat { position: fixed; inset: 0; display: flex; flex-direction: column; background: var(--ui-surface); color: var(--ui-text); min-width: 300px; }
+.quick-heading { display: flex; align-items: center; gap: 11px; padding: 13px 15px; flex-shrink: 0; border-bottom: 1px solid var(--ui-line); background: var(--ui-soft); }
+.quick-heading > img { width: 40px; height: 40px; border-radius: 7px; }
+.quick-heading > div { min-width: 0; flex: 1; }
+.quick-heading h1 { font-size: 15px; line-height: 1.5; margin: 0; }
+.quick-heading > div > span { display: block; font-size: 11px; color: var(--ui-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.quick-heading nav { display: flex; gap: 2px; }
+.quick-heading .icon-button { width: 29px; height: 29px; }
+.quick-history { display: flex; gap: 7px; padding: 8px 13px; border-bottom: 1px solid var(--ui-line); flex-shrink: 0; }
+.quick-history select { flex: 1; min-width: 0; font-size: 12px; height: 32px; text-overflow: ellipsis; }
+.quick-error { display: flex; align-items: center; gap: 7px; padding: 6px 13px; color: #913d49; background: #fff0f1; font-size: 12px; flex-shrink: 0; }
+.quick-error > span { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.quick-error > svg { flex-shrink: 0; }
+.quick-messages { flex: 1; overflow: auto; min-height: 0; padding: 15px 18px; }
+.quick-empty { height: 100%; min-height: 130px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 13px; }
+.quick-empty > img { width: 69px; height: 69px; border-radius: 7px; }
+.quick-empty h2 { font-size: 16px; font-weight: 500; margin: 0; }
+.quick-message { margin-bottom: 23px; overflow-wrap: anywhere; }
+.quick-byline { font-size: 11px; color: var(--ui-muted); display: flex; align-items: center; gap: 10px; margin-bottom: 7px; }
+.quick-message.user { padding: 10px 12px; background: var(--ui-soft); border-radius: 7px; }
+.quick-message .markdown { font-size: 13px; }
+.quick-message .markdown pre { max-width: 100%; }
+.quick-composer { border-top: 1px solid var(--ui-line); padding: 11px 13px 13px; flex-shrink: 0; }
+.quick-composer > textarea { width: 100%; resize: none; min-height: 76px; max-height: 140px; font-size: 13px; padding: 10px; }
+.quick-compose-tools { display: flex; align-items: center; gap: 7px; padding-top: 8px; }
+.quick-compose-tools > select { flex: 1; min-width: 0; font-size: 11px; height: 32px; padding: 4px 6px; text-overflow: ellipsis; }
+.quick-thinking { display: flex; align-items: center; gap: 3px; color: var(--ui-muted); }
+.quick-thinking input { margin: 0; width: 13px; height: 13px; accent-color: var(--ui-accent); }
+.quick-send { color: var(--ui-onAccent); background: var(--ui-accent); flex-shrink: 0; }
+.quick-send:hover { background: var(--ui-accent); filter: brightness(.95); }
+@media (max-height: 500px) { .quick-heading { padding: 7px 12px; } .quick-composer textarea { min-height: 52px; height: 52px; } }

@@ -1,0 +1,19 @@
+{
+  "generator": "Built-in image_gen",
+  "date": "2026-10-19",
+  "character": "Taoling / 桃铃",
+  "assets": [
+    {
+      "file": "/wallpapers/taoling-warm-studio.webp",
+      "source": "exec-9e449545-2d1c-4265-ad15-e70b695bdc4a.png",
+      "reference": "design/mascot/pink-maid-concept-01/character-sheet.png",
+      "prompt": "Use case: identity-preserve. Asset type: finished portrait illustration for the right-hand character scene in a desktop AI workbench, not a UI mockup. Input image 1 is the approved original Taoling character design sheet; use it only as the character identity reference. Create one coherent warm, lived-in studio scene featuring the SAME adult pink cat-eared maid, not a character sheet or cutout. She is sitting naturally beside a small workbench, leaning forward a little with a gentle relaxed smile, one hand resting on an open notebook, looking toward the viewer. Medium three-quarter portrait from ears through lap, face unobstructed. Preserve pink short twin tails, heart-shaped ahoge, ivory inner ear fur and tail tip, mint-aqua eyes, round soft face, black/ivory maid headband, asymmetric dusty-rose ribbon and silver faceted hair clip, black-and-ivory apron outfit, rose neck bow with mint jewel, small tech tool pouch. Cozy detailed creative workshop: soft afternoon sunlight through a window, warm small task lamp, pale pink fabric cushion, compact mint-colored electronics, tea cup, books and small green houseplant. Restrained light pink, muted green, neutral charcoal and ivory palette; warm light without an all-brown/orange filter. Anime game-character illustration with crisp refined lines, delicate painterly materials and soft shaded depth matching the reference quality. Portrait 2:3 image with the character and face in the central vertical 60% so a narrow side-panel crop keeps the ears, face, hands and scene readable. Background must extend to all four edges and the character must feel seated in this real space, not pasted in front of a backdrop. No white void, no floating character, no border, no typography, no logos, no watermark, no additional characters."
+    },
+    {
+      "file": "/mascot/taoling-mini-happy.png",
+      "source": "exec-cbcffb77-bb96-4213-82ec-e77a0ef63ee6.png",
+      "reference": "public/mascot/taoling-mini.png",
+      "prompt": "Use case: identity-preserve. Edit target: the supplied approved transparent chibi Taoling mini sprite. Produce exactly one alternative expression sprite for the head-petting interaction. Preserve absolutely the same seated pose, framing, silhouette, character scale, pink twin tails, heart ahoge, cat ears, headband, ribbons, silver geometric hair clip, apron outfit, mint jewel, hands on lap, black boots, curled tail, and all proportions. Change only her face and a tiny relaxed downward head tilt: both eyes happily closed as two soft curved lines, a small pleased catlike smile, warm blushing cheeks, looking content while being petted. No human hand, no hearts or particles in the bitmap, no new props. Keep full ears, ahoge, shoes, tail and margins visible, same camera and original polished anime game chibi art. Transparent background with true alpha, no shadow plane, no text, no watermark, no grid, no white background. This is the same original adult mascot in 2.5-head mini form, not a new person."
+    }
+  ]
+}

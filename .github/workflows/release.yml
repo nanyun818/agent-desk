@@ -1,0 +1,47 @@
+name: Windows Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: windows-latest
+    timeout-minutes: 40
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version: '24.14.0'
+          cache: npm
+      - name: Validate version and release notes
+        shell: pwsh
+        run: |
+          $version = (Get-Content package.json -Raw | ConvertFrom-Json).version
+          if ($env:GITHUB_REF_NAME -ne "v$version") { throw 'Tag does not match package.json' }
+          if (!(Test-Path -LiteralPath "docs/releases/v$version.md")) { throw 'Release notes are missing' }
+      - run: npm ci
+      - run: node scripts/audit-source.mjs
+      - run: npm test
+      - run: npm run desktop:build
+      - run: node scripts/release-checksums.mjs
+      - name: Publish installer and checksums
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $version = (Get-Content package.json -Raw | ConvertFrom-Json).version
+          $installer = "release/Agent-Desk-Setup-$version-x64.exe"
+          gh release view $env:GITHUB_REF_NAME --repo $env:GITHUB_REPOSITORY *> $null
+          if ($LASTEXITCODE -eq 0) { throw 'Release exists; refusing to overwrite assets' }
+          gh release create $env:GITHUB_REF_NAME $installer release/SHA256SUMS.txt --repo $env:GITHUB_REPOSITORY --verify-tag --title "Agent Desk $version" --notes-file "docs/releases/v$version.md" --draft
+          if ($LASTEXITCODE -ne 0) { throw 'Draft release upload failed' }
+          gh release edit $env:GITHUB_REF_NAME --repo $env:GITHUB_REPOSITORY --draft=false --latest
+          if ($LASTEXITCODE -ne 0) { throw 'Release publication failed' }

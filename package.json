@@ -1,0 +1,116 @@
+{
+  "name": "agent-desk",
+  "version": "0.5.2",
+  "private": true,
+  "type": "module",
+  "main": "desktop/main.cjs",
+  "description": "Local AI conversation and project workbench",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nanyun818/agent-desk.git"
+  },
+  "homepage": "https://github.com/nanyun818/agent-desk#readme",
+  "bugs": {
+    "url": "https://github.com/nanyun818/agent-desk/issues"
+  },
+  "author": "Agent Desk contributors",
+  "license": "MIT",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "node server/index.mjs --dev",
+    "start": "node server/index.mjs",
+    "build": "vite build",
+    "test": "node --test test/*.test.mjs",
+    "desktop": "electron .",
+    "desktop:prepare": "node scripts/prepare-desktop.mjs",
+    "desktop:build": "npm run build && npm run desktop:prepare && electron-builder --win --x64 --publish never"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "0.135.0",
+    "diff": "^8.0.0",
+    "express": "^5.1.0",
+    "ignore": "^7.0.0",
+    "lucide-react": "^0.468.0",
+    "openai": "^6.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-markdown": "^10.0.0",
+    "remark-gfm": "^4.0.0",
+    "vite": "^7.0.0"
+  },
+  "devDependencies": {
+    "electron": "44.9.0",
+    "electron-builder": "26.15.3",
+    "png-to-ico": "^3.0.0",
+    "sharp": "^0.34.0"
+  },
+  "build": {
+    "appId": "local.agentdesk.desktop",
+    "productName": "Agent Desk",
+    "asar": true,
+    "npmRebuild": false,
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "desktop/**/*",
+      "package.json",
+      "!node_modules/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": ".desktop-stage/backend",
+        "to": "backend"
+      },
+      {
+        "from": ".desktop-stage/backend/node_modules",
+        "to": "backend/node_modules",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": ".desktop-stage/runtime",
+        "to": "runtime"
+      },
+      {
+        "from": "build/agent-desk.ico",
+        "to": "agent-desk.ico"
+      },
+      {
+        "from": "build/agent-desk.png",
+        "to": "agent-desk.png"
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/agent-desk.ico",
+      "signAndEditExecutable": true,
+      "signExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Agent Desk",
+      "runAfterFinish": false,
+      "deleteAppDataOnUninstall": false,
+      "installerIcon": "build/agent-desk.ico",
+      "uninstallerIcon": "build/agent-desk.ico",
+      "artifactName": "Agent-Desk-Setup-${version}-${arch}.${ext}"
+    }
+  }
+}

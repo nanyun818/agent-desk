@@ -1,0 +1,42 @@
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: transparent; font: 12px 'Segoe UI', 'Microsoft YaHei', sans-serif; letter-spacing: 0; user-select: none; }
+#pet { width: 100%; height: 100%; position: relative; display: flex; flex-direction: column; align-items: center; padding: 5px 12px 3px; }
+#bubble { max-width: calc(100% - 8px); padding: 5px 11px; line-height: 1.4; border: 1px solid #e5ccd8; background: #fff9fdf2; color: #624755; border-radius: 7px; white-space: nowrap; margin-bottom: 7px; text-align: center; }
+.pet-art { position: relative; width: 100%; flex: 1; min-height: 0; }
+#chat-body { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; background: transparent; cursor: grab; touch-action: none; }
+#pet[data-dragging="yes"] #chat-body { cursor: grabbing; }
+#pet[data-dragging="yes"] #portrait { animation: none; }
+#chat-body:hover, #head:hover { background: transparent; }
+#portrait { display: block; width: 100%; height: 100%; object-fit: contain; object-position: center bottom; animation: breathe 3.5s ease-in-out infinite; transform-origin: center bottom; }
+#head { position: absolute; left: 15%; top: 7%; width: 70%; height: 45%; border: 0; background: transparent; cursor: pointer; }
+#head:focus-visible { outline: 1px dashed #ad5378; outline-offset: -5px; }
+#pat-effect { pointer-events: none; position: absolute; left: 12%; right: 12%; top: 4%; height: 55%; opacity: 0; }
+#hand-icon { width: 34px; height: 34px; position: absolute; left: 46%; top: 0; transform: rotate(-25deg); }
+.pat-heart { position: absolute; color: #c6427f; font-size: 25px; left: 10%; top: 35%; }
+.pat-heart.two { left: auto; right: 9%; top: 20%; font-size: 18px; }
+#pet[data-patting="yes"] #pat-effect { opacity: 1; }
+#pet[data-patting="yes"] #hand-icon { animation: head-stroke .4s ease-in-out 2; }
+#pet[data-patting="yes"] .pat-heart { animation: heart-rise 1s ease-out both; }
+#pet[data-patting="yes"] .pat-heart.two { animation-delay: .1s; }
+.pet-toolbar { position: absolute; right: 5px; top: 38px; display: flex; gap: 2px; opacity: 0; z-index: 2; }
+#pet:hover .pet-toolbar, .pet-toolbar:focus-within, #pet:hover #drag { opacity: 1; }
+#drag { position: absolute; left: 5px; top: 38px; z-index: 3; width: 24px; height: 24px; padding: 4px; border-radius: 5px; background: #fff9fced; border: 1px solid #e4ced9; -webkit-app-region: drag; opacity: 0; }
+#drag img { width: 15px; height: 15px; }
+button { border: 1px solid #e4ced9; background: #fff9fced; border-radius: 5px; cursor: pointer; -webkit-app-region: no-drag; }
+.pet-toolbar button { display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; padding: 4px; }
+.pet-toolbar img { width: 15px; height: 15px; }
+button:hover { background: #ffe4ee; }
+.pet-footer { flex-shrink: 0; display: flex; align-items: center; gap: 5px; height: 28px; margin-top: 3px; }
+#pat-count { background: #fff9fdf2; color: #704456; border: 1px solid #e5ccd8; padding: 3px 7px; border-radius: 5px; font-size: 11px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+#greet { padding: 3px 7px; height: 23px; display: flex; align-items: center; justify-content: center; }
+#greet img { width: 14px; height: 14px; }
+#pet[data-status="thinking"] #portrait { animation: thinking 1.8s ease-in-out infinite; }
+#pet[data-status="done"] #portrait, #pet[data-status="greeting"] #portrait { animation: happy .65s ease-in-out 3; }
+#pet[data-status="error"] #bubble { border-color: #dcb5a3; color: #925839; }
+#pet[data-motion="paused"] #portrait { animation: none; }
+@keyframes breathe { 50% { transform: translateY(-2px) scale(1.012); } }
+@keyframes thinking { 50% { transform: rotate(-2deg) translateY(-2px); } }
+@keyframes happy { 50% { transform: translateY(-5px) rotate(2deg); } }
+@keyframes head-stroke { 50% { transform: translateX(-12px) rotate(-8deg); } }
+@keyframes heart-rise { from { opacity: 0; transform: translateY(4px) scale(.6); } 25% { opacity: 1; } to { opacity: 0; transform: translateY(-32px) scale(1.1); } }
+@media (prefers-reduced-motion: reduce) { #portrait, #hand-icon, .pat-heart { animation: none !important; } }
